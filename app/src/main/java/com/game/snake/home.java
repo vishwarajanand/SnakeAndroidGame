@@ -1,6 +1,7 @@
 package com.game.snake;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -23,10 +24,14 @@ public class home extends AppCompatActivity {
     }
 
     private String originalScreenSize() {
-        DisplayMetrics metrics = new DisplayMetrics();
-        WindowManager windowManager = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-        Display defaultDisplay = windowManager.getDefaultDisplay();
-        defaultDisplay.getRealMetrics(metrics);
-        return String.valueOf("Original screen size: " + metrics.widthPixels) + "X" + String.valueOf(metrics.heightPixels);
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getRealSize(size);
+//        DisplayMetrics metrics = new DisplayMetrics();
+//        WindowManager windowManager = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+//        Display defaultDisplay = windowManager.getDefaultDisplay();
+//        defaultDisplay.getRealMetrics(metrics);
+//        return String.valueOf("Original screen size: " + metrics.widthPixels) + "X" + String.valueOf(metrics.heightPixels);
+        return String.valueOf("Original screen size: " + size.x) + "X" + String.valueOf(size.y);
     }
 }

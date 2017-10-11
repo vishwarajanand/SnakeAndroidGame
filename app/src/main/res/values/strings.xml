@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">Snake</string>
     <string name="textViewScreenSize">textViewScreenSize</string>
+
+    <string name="title_activity_game_play">GamePlay</string>
+    <string name="left_button">Left</string>
+    <string name="right_button">Right</string>
+    <string name="up_button">Up</string>
+    <string name="down_button">Down</string>
+    <string name="game_content">Game content</string>
+
+    <string name="preference_file_key">com.game.snake</string>
+    <string name="total_score">Total Score</string>
+    <string name="highest_score">Highest Score</string>
+    <string name="setting_play_first">settingPlayFirst</string>
+    <string name="setting_select_x">settingPlayX</string>
+    <string name="optionText_playFirst">\u0020Play  First\u0020\u0020</string>
+    <string name="optionText_playSecond">\u0020Play Second\u0020\u0020</string>
+    <string name="optionText_select_x">\u0020Select X\u0020\u0020</string>
+    <string name="optionText_select_o">\u0020Select O\u0020\u0020</string>
 </resources>

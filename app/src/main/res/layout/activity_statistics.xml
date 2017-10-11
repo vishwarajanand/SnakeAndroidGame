@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="com.game.snake.Statistics">
+
+<TextView
+    android:id="@+id/textView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Score from past games"
+    android:layout_alignParentTop="true"
+    android:layout_marginTop="50dp"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"/>
+
+<TextView
+    android:id="@+id/textView3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Highest: "
+    android:layout_below="@+id/textView4"
+    android:layout_alignLeft="@+id/textView"
+    android:layout_alignStart="@+id/textView"
+    android:layout_marginTop="61dp" />
+
+<TextView
+    android:id="@+id/textView4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/textView"
+    android:layout_alignStart="@+id/textView"
+    android:layout_alignTop="@+id/textView"
+    android:layout_marginTop="62dp"
+    android:text="Total: " />
+
+<TextView
+    android:id="@+id/txt_total_score"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/textView3"
+    android:layout_alignEnd="@+id/textView"
+    android:layout_alignRight="@+id/textView"
+    android:text="Total score" />
+
+<TextView
+    android:id="@+id/txt_highest_score"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/textView3"
+    android:layout_alignLeft="@+id/txt_total_score"
+    android:layout_alignStart="@+id/txt_total_score"
+    android:text="Highest score"
+    android:layout_alignTop="@+id/textView3" />
+
+</RelativeLayout>

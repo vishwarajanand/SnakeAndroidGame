@@ -5,17 +5,20 @@
     android:orientation="horizontal"
     tools:context="com.game.snake.GamePlay">
 
-    <TextView
-        android:id="@+id/fullscreen_content"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
         android:keepScreenOn="true"
-        android:text="@string/game_content"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:background="@drawable/border" >
+
+        <com.game.snake.GameAreaImageView
+            android:id="@+id/fullscreen_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/container"
@@ -42,6 +45,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="5dp"
                 android:text=" Score: 0000"
+                android:textSize="40px"
                 android:textStyle="bold|italic" />
         </RelativeLayout>
 

@@ -40,21 +40,21 @@ public class GamePlay extends AppCompatActivity {
         }
     }
 
-    public void onControlButtonsClick(View v){
+    public void onControlButtonsClick(View v) {
         String controlPressed = v.getTag().toString();
         Controller.setControlAction(controlPressed);
-        toastControl();
+//        toastControl();
     }
 
 
-    private void toastControl(){
+    private void toastControl() {
         toastShort("Control: " + Controller.getControlAction().toString());
     }
 
-    private void toastShort(String message){
-        TextView gameContent = (TextView) findViewById(R.id.fullscreen_content);
-        gameContent.setText(message);
-//        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
-//        toast.show();
+    private void toastShort(String message) {
+//        TextView gameContent = (TextView) findViewById(R.id.fullscreen_content);
+//        gameContent.setText(message);
+        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+        toast.show();
     }
 }

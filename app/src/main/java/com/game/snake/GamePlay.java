@@ -9,6 +9,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -36,5 +38,23 @@ public class GamePlay extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
+    }
+
+    public void onControlButtonsClick(View v){
+        String controlPressed = v.getTag().toString();
+        Controller.setControlAction(controlPressed);
+        toastControl();
+    }
+
+
+    private void toastControl(){
+        toastShort("Control: " + Controller.getControlAction().toString());
+    }
+
+    private void toastShort(String message){
+        TextView gameContent = (TextView) findViewById(R.id.fullscreen_content);
+        gameContent.setText(message);
+//        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+//        toast.show();
     }
 }

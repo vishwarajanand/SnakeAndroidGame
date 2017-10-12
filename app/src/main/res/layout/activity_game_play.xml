@@ -31,7 +31,19 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:orientation="horizontal"
-            tools:ignore="NestedWeights"></RelativeLayout>
+            tools:ignore="NestedWeights">
+
+            <TextView
+                android:id="@+id/txt_currentScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:text=" Score: 0000"
+                android:textStyle="bold|italic" />
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/fullscreen_content_controls"
@@ -65,6 +77,9 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:orientation="vertical"
+                    android:clickable="true"
+                    android:tag="UP"
+                    android:onClick="onControlButtonsClick"
                     android:background="@drawable/ic_arrow_upward_black_24px">
                 </LinearLayout>
 
@@ -92,6 +107,9 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:orientation="vertical"
+                    android:clickable="true"
+                    android:tag="LEFT"
+                    android:onClick="onControlButtonsClick"
                     android:background="@drawable/ic_arrow_back_black_24px"
                     tools:ignore="NestedWeights">
                 </LinearLayout>
@@ -111,6 +129,9 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:orientation="vertical"
+                    android:clickable="true"
+                    android:tag="RIGHT"
+                    android:onClick="onControlButtonsClick"
                     android:background="@drawable/ic_arrow_forward_black_24px">
                 </LinearLayout>
             </LinearLayout>
@@ -139,6 +160,9 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:orientation="vertical"
+                    android:clickable="true"
+                    android:tag="DOWN"
+                    android:onClick="onControlButtonsClick"
                     android:background="@drawable/ic_arrow_downward_black_24px">
                 </LinearLayout>
 

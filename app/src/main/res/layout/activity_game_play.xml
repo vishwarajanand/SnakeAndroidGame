@@ -14,7 +14,7 @@
         android:orientation="horizontal"
         android:background="@drawable/border" >
 
-        <com.game.snake.GameAreaImageView
+        <ImageView
             android:id="@+id/fullscreen_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

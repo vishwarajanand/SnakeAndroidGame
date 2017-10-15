@@ -1,21 +1,12 @@
 package com.game.snake;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.TextView;
-
-import java.util.Arrays;
 
 public class home extends AppCompatActivity{
 
@@ -39,7 +30,7 @@ public class home extends AppCompatActivity{
     }
 
     public void onClick_NewGame(View v) {
-        Intent k = new Intent(this, GamePlay.class);
+        Intent k = new Intent(this, GameScreen.class);
         startActivity(k);
     }
     public void onClick_Statistics(View v) {

@@ -1,4 +1,4 @@
-package com.game.snake;
+package com.game.controls;
 
 /**
  * Created by dabba on 12/10/17.

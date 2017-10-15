@@ -11,8 +11,6 @@ import com.game.controls.GAMESTATUS;
 import com.game.controls.GameStatusController;
 import com.game.engine.GameEngine;
 
-import static com.game.controls.GAMESTATUS.NEW;
-
 /**
  * Created by dabba on 14/10/17.
  */
@@ -45,10 +43,10 @@ public class GameBoard extends SurfaceView implements SurfaceHolder.Callback {
         boolean retry = true;
         while(retry){
             try {
-                gameRun.setRunning(false);
+                gameRun.terminate();
                 gameRun.join();
             }catch (Exception ex){
-                ex.printStackTrace();
+                Log.e(TAG, "Game Engine could not be destroyed",ex);
             }
             retry = false;
         }
@@ -70,11 +68,9 @@ public class GameBoard extends SurfaceView implements SurfaceHolder.Callback {
             case NEW:
             case PAUSED:
                 GameStatusController.setControlAction(GAMESTATUS.RUNNING);
-                gameRun.setRunning(true);
                 break;
             case RUNNING:
                 GameStatusController.setControlAction(GAMESTATUS.PAUSED);
-                gameRun.setRunning(false);
                 break;
             default:
                 return false; // could not process onTouchEvent
@@ -88,13 +84,12 @@ public class GameBoard extends SurfaceView implements SurfaceHolder.Callback {
         // terminate old game engine threads
         if(gameRun != null){
 //            gameRun.setRunning(false);
-            gameRun.setTerminalSignal(true);
+            gameRun.terminate();
         }
 
+        GameStatusController.setControlAction(GAMESTATUS.NEW);
         gameRun = new GameEngine(getHolder(), this);
         gameRun.start();
-        GameStatusController.setControlAction(GAMESTATUS.NEW);
-        gameRun.setRunning(false);
         //TODO: reset game actors
     }
 

@@ -5,6 +5,8 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
+import com.game.controls.GAMESTATUS;
+import com.game.controls.GameStatusController;
 import com.game.impl.GameBoard;
 
 /**
@@ -14,11 +16,10 @@ import com.game.impl.GameBoard;
 public class GameEngine extends Thread {
     private static final String TAG = "GameEngine";
 
-    private SurfaceHolder surfaceHolder;
+    private final SurfaceHolder surfaceHolder;
     private GameBoard gameBoard;
-    private boolean isRunning;
     private boolean terminalSignal;
-    public static Canvas canvas;
+    private static Canvas canvas;
     private static final long target_millisPerFrame = 33; // ~30 FPS
 
     public GameEngine(SurfaceHolder holder, GameBoard board) {
@@ -26,21 +27,16 @@ public class GameEngine extends Thread {
         this.surfaceHolder = holder;
         this.gameBoard = board;
         terminalSignal = false;
-        this.isRunning = false;
     }
 
-    public void setRunning(boolean running) {
-        this.isRunning = running;
-    }
-
-    public void setTerminalSignal(boolean terminate){this.terminalSignal = terminate;}
+    public void terminate(){this.terminalSignal = true;}
 
     @Override
     public void run() {
         Log.v(TAG, "State: Running");
         while (!terminalSignal) {
 
-            while ((!terminalSignal) && isRunning) {
+            while ((!terminalSignal) && (GameStatusController.getControlAction() == GAMESTATUS.RUNNING)) {
 
                 long startTime = SystemClock.uptimeMillis();
                 canvas = null;

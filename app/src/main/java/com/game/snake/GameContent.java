@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.game.impl.GameBoard;
+import com.game.impl.GamePanel;
 
 
 public class GameContent extends Fragment {
@@ -24,6 +24,6 @@ public class GameContent extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return new GameBoard(getActivity());
+        return new GamePanel(getActivity());
     }
 }

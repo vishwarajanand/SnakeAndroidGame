@@ -8,7 +8,7 @@ import android.util.Log;
 
 public final class MoveController {
     private static final String TAG = "MoveController";
-    private static final long CONTROL_RETENTION_IN_MILLIS = 100L;
+    private static final long CONTROL_RETENTION_IN_MILLIS = 1100L;
     private static MoveController singletonMoveController;
     private MOVE moveAction;
     private long epoch_time_in_millis;

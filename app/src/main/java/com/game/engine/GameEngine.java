@@ -20,7 +20,7 @@ public class GameEngine extends Thread {
     private GamePanel gamePanel;
     private boolean terminalSignal;
     private static Canvas canvas;
-    private static final long target_millisPerFrame = 33; // ~30 FPS
+    private static final long target_millisPerFrame = 500; // ~2 FPS
 
     public GameEngine(SurfaceHolder holder, GamePanel panel) {
         super();
@@ -79,7 +79,7 @@ public class GameEngine extends Thread {
                 Log.v(TAG, "WxH = " + w + "x" + h);
 
                 this.gamePanel.update();
-                Log.v(TAG, "GameBoard updated");
+                Log.v(TAG, "GamePanel updated");
                 this.gamePanel.draw(canvas);
                 Log.v(TAG, "Canvas updated");
             }

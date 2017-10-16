@@ -9,7 +9,7 @@ import android.util.Log;
 public final class GameStatusController {
     private static final String TAG = "GameStatusController";
     private static GameStatusController singletonGameStateController;
-    private GAMESTATUS gamestate;
+    private GAMESTATUS gameStatus;
 
     private GameStatusController() {
     }
@@ -23,11 +23,11 @@ public final class GameStatusController {
     }
 
     public static void setControlAction(GAMESTATUS newGameState) {
-        getController().gamestate = newGameState;
+        getController().gameStatus = newGameState;
         Log.v(TAG, "Setting GameState to : " + newGameState.toString());
     }
 
     public static GAMESTATUS getControlAction() {
-        return getController().gamestate;
+        return getController().gameStatus;
     }
 }

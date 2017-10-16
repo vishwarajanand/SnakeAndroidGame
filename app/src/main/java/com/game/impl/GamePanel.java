@@ -20,10 +20,13 @@ import com.game.engine.GameEngine;
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private static final String TAG = "GamePanel";
+    private static final int GAME_SPEED_IN_FRAMES_PER_SECOND = 30;
+    private static int frameCount = 0;
 
     private GameEngine gameEngine;
     private GameBoard gameBoard;
-    public GamePanel(Context context){
+
+    public GamePanel(Context context) {
         super(context);
 
         getHolder().addCallback(this);
@@ -45,25 +48,25 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
         boolean retry = true;
-        while(retry){
+        while (retry) {
             try {
                 gameEngine.terminate();
                 gameEngine.join();
-            }catch (Exception ex){
-                Log.e(TAG, "Game Engine could not be destroyed",ex);
+            } catch (Exception ex) {
+                Log.e(TAG, "Game Engine could not be destroyed", ex);
             }
             retry = false;
         }
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event){
-        if(event.getAction() != MotionEvent.ACTION_DOWN){
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() != MotionEvent.ACTION_DOWN) {
             return false;//not registered
         }
 
         Log.v(TAG, "Started Mouse event with game status : " + GameStatusController.getControlAction());
-        switch (GameStatusController.getControlAction()){
+        switch (GameStatusController.getControlAction()) {
             case GAME_OVER:
                 GameStatusController.setControlAction(GAMESTATUS.NEW);
                 resetGame();
@@ -80,13 +83,12 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         }
 
         Log.v(TAG, "Finished Mouse event with game status: " + GameStatusController.getControlAction());
-        return  true; //processes
+        return true; //processes
     }
 
-    private void resetGame()
-    {
+    private void resetGame() {
         // terminate old game engine threads
-        if(gameEngine != null){
+        if (gameEngine != null) {
             gameEngine.terminate();
         }
 
@@ -96,12 +98,12 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         gameEngine.start();
     }
 
-    public void update(){
+    public void update() {
         gameBoard.tick();
     }
 
     @Override
-    public void draw(Canvas canvas){
+    public void draw(Canvas canvas) {
         super.draw(canvas);
         gameBoard.draw(canvas);
         Log.v(TAG, "Canvas drawn");

@@ -13,6 +13,7 @@
     <string name="total_score">Total Score</string>
     <string name="highest_score">Highest Score</string>
     <string name="scores_prefix"> Score: </string>
+    <string name="speed_prefix"> Speed: </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

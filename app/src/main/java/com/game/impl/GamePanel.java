@@ -11,6 +11,7 @@ import android.view.SurfaceView;
 import android.view.SurfaceHolder;
 
 import com.game.controls.GAMESTATUS;
+import com.game.controls.GameScoreController;
 import com.game.controls.GameStatusController;
 import com.game.engine.GameEngine;
 
@@ -20,8 +21,6 @@ import com.game.engine.GameEngine;
 
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private static final String TAG = "GamePanel";
-    private static final int GAME_SPEED_IN_FRAMES_PER_SECOND = 30;
-    private static int frameCount = 0;
 
     private GameEngine gameEngine;
     private GameBoard gameBoard;
@@ -57,6 +56,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             }
             retry = false;
         }
+        GameScoreController.settle();
     }
 
     @Override

@@ -1,26 +1,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:keepScreenOn="true"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:keepScreenOn="true"
     android:orientation="horizontal"
-    tools:context="com.game.snake.GameScreen">
+    tools:context="com.game.mySnakeGame.GameScreen">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:background="@drawable/border"
         android:gravity="center"
         android:keepScreenOn="true"
-        android:orientation="horizontal"
-        android:background="@drawable/border" >
+        android:orientation="horizontal">
 
         <fragment
-            android:name="com.game.snake.GameContent"
             android:id="@+id/fullscreen_content"
+            android:name="com.game.mySnakeGame.GameContent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </fragment>
+            android:layout_height="match_parent"></fragment>
 
     </LinearLayout>
 
@@ -37,20 +36,64 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             tools:ignore="NestedWeights">
 
             <TextView
-                android:id="@+id/txt_currentScore"
+                android:id="@+id/txt_currentSpeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="20dp"
                 android:layout_marginEnd="5dp"
-                android:text=" Score: 0000"
+                android:layout_weight="2"
+                android:text=" Speed: BEGINNER"
                 android:textSize="40px"
                 android:textStyle="bold|italic" />
+
+
+            <LinearLayout
+                android:id="@+id/speed_controls"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/btn_increaseSpeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_arrow_upward_black_24px"
+                    android:clickable="true"
+                    android:onClick="onSpeedControlButtonsClick"
+                    android:orientation="vertical"
+                    android:tag="UP"></LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn_decreaseSpeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_arrow_downward_black_24px"
+                    android:clickable="true"
+                    android:onClick="onSpeedControlButtonsClick"
+                    android:orientation="vertical"
+                    android:tag="DOWN"></LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/empty_area"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                </LinearLayout>
         </RelativeLayout>
 
         <LinearLayout
@@ -66,8 +109,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/fullscreen_content_controls11"
@@ -84,12 +127,11 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:orientation="vertical"
+                    android:background="@drawable/ic_arrow_upward_black_24px"
                     android:clickable="true"
-                    android:tag="UP"
-                    android:onClick="onControlButtonsClick"
-                    android:background="@drawable/ic_arrow_upward_black_24px">
-                </LinearLayout>
+                    android:onClick="onMoveControlButtonsClick"
+                    android:orientation="vertical"
+                    android:tag="UP"></LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/fullscreen_content_controls13"
@@ -105,8 +147,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/fullscreen_content_controls21"
@@ -114,13 +156,12 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:clickable="true"
-                    android:tag="LEFT"
-                    android:onClick="onControlButtonsClick"
                     android:background="@drawable/ic_arrow_back_black_24px"
-                    tools:ignore="NestedWeights">
-                </LinearLayout>
+                    android:clickable="true"
+                    android:onClick="onMoveControlButtonsClick"
+                    android:orientation="vertical"
+                    android:tag="LEFT"
+                    tools:ignore="NestedWeights"></LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/fullscreen_content_controls22"
@@ -136,12 +177,11 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:orientation="vertical"
+                    android:background="@drawable/ic_arrow_forward_black_24px"
                     android:clickable="true"
-                    android:tag="RIGHT"
-                    android:onClick="onControlButtonsClick"
-                    android:background="@drawable/ic_arrow_forward_black_24px">
-                </LinearLayout>
+                    android:onClick="onMoveControlButtonsClick"
+                    android:orientation="vertical"
+                    android:tag="RIGHT"></LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -149,8 +189,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/fullscreen_content_controls31"
@@ -167,12 +207,11 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:orientation="vertical"
+                    android:background="@drawable/ic_arrow_downward_black_24px"
                     android:clickable="true"
-                    android:tag="DOWN"
-                    android:onClick="onControlButtonsClick"
-                    android:background="@drawable/ic_arrow_downward_black_24px">
-                </LinearLayout>
+                    android:onClick="onMoveControlButtonsClick"
+                    android:orientation="vertical"
+                    android:tag="DOWN"></LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/fullscreen_content_controls33"

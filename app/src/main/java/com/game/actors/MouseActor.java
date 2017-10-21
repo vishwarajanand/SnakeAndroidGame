@@ -2,6 +2,9 @@ package com.game.actors;
 
 import android.graphics.Canvas;
 import android.graphics.Point;
+import android.util.Log;
+
+import com.game.controls.GameScoreController;
 
 import java.util.Random;
 
@@ -10,16 +13,17 @@ import java.util.Random;
  */
 
 public class MouseActor implements Actor {
+    private static final String TAG = "SnakeActor";
     Point screen_size;
-    Point current;
+    Point location;
 
     public MouseActor(int size_x, int size_y) {
         this.screen_size = new Point(size_x, size_y);
-        this.current = new Point(5, 5);
+        this.location = new Point(5, 5);
     }
 
     public Point getPoint() {
-        return current;
+        return location;
     }
 
     @Override
@@ -29,6 +33,10 @@ public class MouseActor implements Actor {
 
     @Override
     public void tick() {
-        current = new Point((new Random()).nextInt(screen_size.x + 1), (new Random()).nextInt(screen_size.y + 1));
+        location = new Point(1 + (new Random()).nextInt(screen_size.x - 2), 1 + (new Random()).nextInt(screen_size.y - 2));
+        Log.v(TAG, "New mouse created: " + location + " with screen size: " + screen_size);
+
+        // Bonus for eating mouse
+        GameScoreController.increaseCurrent(20);
     }
 }

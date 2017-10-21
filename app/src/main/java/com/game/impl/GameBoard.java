@@ -4,6 +4,8 @@ import android.graphics.Canvas;
 
 import com.game.actors.Painter;
 import com.game.actors.SnakeActor;
+import com.game.controls.GAMESTATUS;
+import com.game.controls.GameScoreController;
 import com.game.controls.GameStatusController;
 
 /**
@@ -18,7 +20,7 @@ public class GameBoard {
     }
 
     public void tick() {
-        if(snake != null){
+        if (snake != null && GameStatusController.getControlAction() == GAMESTATUS.RUNNING) {
             snake.tick();
         }
     }
@@ -30,14 +32,17 @@ public class GameBoard {
 
         switch (GameStatusController.getControlAction()) {
             case NEW:
-                Painter.getScreenPainter().drawText("Tap to Start",canvas);
-                snake = new SnakeActor(Painter.getScreenPainter().getScreenSize().x,Painter.getScreenPainter().getScreenSize().x);
+                Painter.getScreenPainter().drawText("Tap to Start", canvas);
+                //passing reverse heightXwidth because screen is always set to be in horizontal landscape mode
+                GameScoreController.settle();
+                snake = new SnakeActor(Painter.getScreenPainter().getScreenSize().y, Painter.getScreenPainter().getScreenSize().x);
                 break;
             case PAUSED:
-                Painter.getScreenPainter().drawText("Game paused, tap to Play",canvas);
+                Painter.getScreenPainter().drawText("Game paused, tap to Play", canvas);
                 break;
             case GAME_OVER:
-                Painter.getScreenPainter().drawText("Game Over! Tap to Retry",canvas);
+                Painter.getScreenPainter().drawText("Game Over! Tap to Retry", canvas);
+                GameScoreController.settle();
                 break;
             case RUNNING:
                 Painter.getScreenPainter().drawScreen(canvas);

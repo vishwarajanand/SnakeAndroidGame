@@ -5,7 +5,7 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
-import com.game.controls.GAMESTATUS;
+import com.game.controls.GameSpeedController;
 import com.game.controls.GameStatusController;
 import com.game.impl.GamePanel;
 
@@ -20,13 +20,36 @@ public class GameEngine extends Thread {
     private GamePanel gamePanel;
     private boolean terminalSignal;
     private static Canvas canvas;
-    private static final long target_millisPerFrame = 500; // ~2 FPS
 
     public GameEngine(SurfaceHolder holder, GamePanel panel) {
         super();
         this.surfaceHolder = holder;
         this.gamePanel = panel;
         terminalSignal = false;
+    }
+
+    private long getTargetMillisPerFrame() {
+        long millis_per_frame = 500; // ~2 FPS
+        switch (GameSpeedController.getSpeedLevel()) {
+            case BEGINNER:
+                millis_per_frame = 500;
+                break; // 2 FPS
+            case AVERAGE:
+                millis_per_frame = 400;
+                break; // 2.5 FPS
+            case MODERATE:
+                millis_per_frame = 300;
+                break; // 3 FPS
+            case PRO:
+                millis_per_frame = 200;
+                break; // 5 FPS
+            case EXPERT:
+                millis_per_frame = 100;
+                break; //10 FPS
+            default:
+                throw new RuntimeException("Game Speed is not supported: " + GameStatusController.getControlAction());
+        }
+        return millis_per_frame;
     }
 
     public void terminate() {
@@ -52,7 +75,7 @@ public class GameEngine extends Thread {
             // ... that leaves (33 - 10 =) 23 millis of "time to spare"
             // ... so that's how long we'll sleep
 
-            long timeToWait = target_millisPerFrame - timeSpentInMethodCall;
+            long timeToWait = getTargetMillisPerFrame() - timeSpentInMethodCall;
 
             // But apply a minimum wait time so we don't starve the rest of the system
             if (timeToWait < 2)
@@ -68,7 +91,7 @@ public class GameEngine extends Thread {
         Log.v(TAG, "State: Terminated");
     }
 
-    public void drawFrame() {
+    private void drawFrame() {
         try {
             Log.v(TAG, "Starting frame update.");
             canvas = this.surfaceHolder.lockCanvas();

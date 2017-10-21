@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.game.snake.home">
+    tools:context="com.game.mySnakeGame.home">
 
     <Button
         android:id="@+id/but_newGame"
@@ -30,15 +30,15 @@
         android:layout_alignEnd="@+id/but_newGame"
         android:layout_marginTop="65dp" />
 
-    <TextView
-        android:id="@+id/textViewScreenSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
-        android:text="               "
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="343dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+    <!--<TextView-->
+        <!--android:id="@+id/textViewScreenSize"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="37dp"-->
+        <!--android:text="               "-->
+        <!--android:visibility="visible"-->
+        <!--tools:layout_editor_absoluteX="148dp"-->
+        <!--tools:layout_editor_absoluteY="343dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true" />-->
 </RelativeLayout>

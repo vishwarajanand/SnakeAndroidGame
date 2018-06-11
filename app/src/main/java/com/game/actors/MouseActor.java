@@ -37,6 +37,6 @@ public class MouseActor implements Actor {
         Log.v(TAG, "New mouse created: " + location + " with screen size: " + screen_size);
 
         // Bonus for eating mouse
-        GameScoreController.increaseCurrent(20);
+        GameScoreController.incrementScores(20);
     }
 }

@@ -29,7 +29,7 @@ public class SnakeActor implements Actor {
         this.body.add(new Point(10, 10));
         this.mouse = new MouseActor(size_x, size_y);
         velocity = MOVE.RIGHT;
-        GameScoreController.settle();
+        GameScoreController.reset();
     }
 
     public Point getHead() {
@@ -82,7 +82,7 @@ public class SnakeActor implements Actor {
                 || newHead.y == 0) {
             Log.v(TAG, "Game over because snake crossed screen- Screen size:" + screen_size + " and snake head: " + newHead);
             GameStatusController.setControlAction(GAMESTATUS.GAME_OVER);
-            GameScoreController.settle();
+            GameScoreController.reset();
             return;
         }
 
@@ -91,13 +91,13 @@ public class SnakeActor implements Actor {
             if (areSamePoints(newHead, bodyPoint)) {
                 Log.v(TAG, "Game over because snake crossed its own body- snake body: " + bodyPoint + " and snake head: " + newHead);
                 GameStatusController.setControlAction(GAMESTATUS.GAME_OVER);
-                GameScoreController.settle();
+                GameScoreController.reset();
                 return;
             }
         }
 
         // Increment score for moving
-        GameScoreController.increaseCurrent(1);
+        GameScoreController.incrementScores(1);
 
         //add length if new Head is mouse
         if (areSamePoints(newHead, mouse.location)) {
@@ -107,7 +107,7 @@ public class SnakeActor implements Actor {
             if (body.size() >= screen_size.x * screen_size.y) {
                 Log.v(TAG, "Game over because snake has covered all of screen- " + screen_size+ " and snake size: " + body.size());
                 GameStatusController.setControlAction(GAMESTATUS.GAME_OVER);
-                GameScoreController.settle();
+                GameScoreController.reset();
                 return;
             }
 

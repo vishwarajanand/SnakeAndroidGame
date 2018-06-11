@@ -2,9 +2,6 @@ package com.game.impl;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
@@ -56,7 +53,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             }
             retry = false;
         }
-        GameScoreController.settle();
+        GameScoreController.reset();
     }
 
     @Override

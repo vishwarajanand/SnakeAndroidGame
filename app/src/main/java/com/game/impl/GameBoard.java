@@ -34,7 +34,7 @@ public class GameBoard {
             case NEW:
                 Painter.getScreenPainter().drawText("Tap to Start", canvas);
                 //passing reverse heightXwidth because screen is always set to be in horizontal landscape mode
-                GameScoreController.settle();
+                GameScoreController.reset();
                 snake = new SnakeActor(Painter.getScreenPainter().getScreenSize().y, Painter.getScreenPainter().getScreenSize().x);
                 break;
             case PAUSED:
@@ -42,7 +42,7 @@ public class GameBoard {
                 break;
             case GAME_OVER:
                 Painter.getScreenPainter().drawText("Game Over! Tap to Retry", canvas);
-                GameScoreController.settle();
+                GameScoreController.reset();
                 break;
             case RUNNING:
                 Painter.getScreenPainter().drawScreen(canvas);

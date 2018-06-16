@@ -28,9 +28,5 @@ public class Statistics extends AppCompatActivity {
 
         TextView txt_lost_score = (TextView) findViewById(R.id.txt_highest_score);
         txt_lost_score.setText(Integer.toString(GameScoreController.getHighest()));
-
-
-        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.snake_bite_yikes);
-        mediaPlayer.start();
     }
 }

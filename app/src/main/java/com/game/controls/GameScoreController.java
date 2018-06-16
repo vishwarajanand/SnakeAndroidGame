@@ -18,11 +18,11 @@ public final class GameScoreController {
     private int totalScore, highestScore, currentScore;
 
     private GameScoreController(Context ctx) {
-        currentScore = 0;
+        totalScore = highestScore = currentScore = 0;
         this.CONTEXT = ctx;
-        SharedPreferences sharedPref = ctx.getSharedPreferences(Resources.getSystem().getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        totalScore = sharedPref.getInt(Resources.getSystem().getString(R.string.total_score), GameScoreController.getTotal());
-        highestScore = sharedPref.getInt(Resources.getSystem().getString(R.string.highest_score), GameScoreController.getHighest());
+        SharedPreferences sharedPref = ctx.getSharedPreferences(ctx.getResources().getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        totalScore = sharedPref.getInt(ctx.getResources().getString(R.string.total_score), 0);
+        highestScore = sharedPref.getInt(ctx.getResources().getString(R.string.highest_score), 0);
     }
 
     private static GameScoreController getController() {
@@ -70,9 +70,9 @@ public final class GameScoreController {
     }
 
     public static void updateScores() {
-        SharedPreferences sharedPref = CONTEXT.getSharedPreferences(Resources.getSystem().getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = CONTEXT.getSharedPreferences(CONTEXT.getResources().getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = sharedPref.edit();
-        prefEditor.putInt(Resources.getSystem().getString(R.string.total_score), GameScoreController.getTotal())
-                .putInt(Resources.getSystem().getString(R.string.highest_score), GameScoreController.getHighest()).commit();
+        prefEditor.putInt(CONTEXT.getResources().getString(R.string.total_score), GameScoreController.getTotal())
+                .putInt(CONTEXT.getResources().getString(R.string.highest_score), GameScoreController.getHighest()).commit();
     }
 }

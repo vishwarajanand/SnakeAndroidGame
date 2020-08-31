@@ -2,12 +2,12 @@ package com.game.mySnakeGame;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.game.controls.GameAudioController;
 import com.game.controls.GameScoreController;
-import android.support.v7.app.AppCompatActivity;
 
 public class home extends AppCompatActivity {
 
